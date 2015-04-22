@@ -1,13 +1,13 @@
 ---
-title: API Reference
+title: 学壹传媒 API 文档
 
 language_tabs:
   - shell
   - ruby
-  - python
+  - java
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='#'>学壹传媒</a>
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -16,99 +16,72 @@ includes:
 search: true
 ---
 
-# Introduction
+# 介绍
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+学壹传媒API文档
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# 授权
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# Authentication
-
-> To authorize, use this code:
+> 使用一下方式授权:
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
+```java
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
+# 发送正确的authorization
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: Basic O4K4EGheju926VhH67KXOQ'"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> 替换 `O4K4EGheju926VhH67KXOQ` 为你的 `access_token`.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+提供两种 `access_token` 发送形式:
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+* `Authorization: Basic O4K4EGheju926VhH67KXOQ`
+* `url?access_token=O4K4EGheju926VhH67KXOQ`
 
 <aside class="notice">
-You must replace `meowmeowmeow` with your personal API key.
+替换 `O4K4EGheju926VhH67KXOQ` 为你自己的 `access_token`.
 </aside>
 
-# Kittens
 
-## Get All Kittens
+# 大学
+
+## 大学列表
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+```java
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "http://api.thecampus.cc/api/v1/universities"
+  -H "Authorization: Basic O4K4EGheju926VhH67KXOQ"
 ```
 
-> The above command returns JSON structured like this:
+> JSON形如:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  'status': 'success',
+  'code': 200,
+  'msg': '',
+  'data': '',
+  'links': {}
+}
 ```
 
-This endpoint retrieves all kittens.
+活取所有的大学列表.
 
 ### HTTP Request
 
-`GET http://example.com/kittens`
+`GET http://api.thecampus.cc/api/v1/universities`
 
-### Query Parameters
+### 参数
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -128,7 +101,7 @@ api = Kittn::APIClient.authorize!('meowmeowmeow')
 api.kittens.get(2)
 ```
 
-```python
+```java
 import kittn
 
 api = kittn.authorize('meowmeowmeow')
@@ -156,7 +129,7 @@ This endpoint retrieves a specific kitten.
 
 <aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
 
-### HTTP Request
+### HTTP 请求
 
 `GET http://example.com/kittens/<ID>`
 
