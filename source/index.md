@@ -495,6 +495,203 @@ curl -X PUT "http://localhost:3000/api/v1/users/1/password/update" -d "user[pass
 ID | none | 用户id
 user[pass] | none | 用户新密码
 
+## 关注用户
+
+```ruby
+```
+
+```java
+```
+
+```shell
+curl "http://localhost:3000/api/v1/users/1/follow/2" -H "Authorization: Basic 7pQOwX_2cHs0zwM7vwo0RA"
+```
+
+> JSON形如:
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "msg": "User followed success.",
+    "data": null,
+    "links": null
+}
+```
+
+关注用户
+
+### HTTP 请求
+
+`GET http://api.thecampus.cc/api/v1/users/<ID>/follow/<FOLLOWABLE_ID>`
+
+### 参数
+
+参数 | 默认值 | 描述
+--------- | ------- | -----------
+ID | none | 用户id
+FOLLOWABLE_ID | none | 被关注者id
+
+## 取消关注
+
+```ruby
+```
+
+```java
+```
+
+```shell
+curl "http://localhost:3000/api/v1/users/1/unfollow/2" -H "Authorization: Basic 7pQOwX_2cHs0zwM7vwo0RA"
+```
+
+> JSON形如:
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "msg": "User un followed success.",
+    "data": null,
+    "links": null
+}
+```
+
+取消关注
+
+### HTTP 请求
+
+`GET http://api.thecampus.cc/api/v1/users/<ID>/unfollow/<FOLLOWABLE_ID>`
+
+### 参数
+
+参数 | 默认值 | 描述
+--------- | ------- | -----------
+ID | none | 用户id
+FOLLOWABLE_ID | none | 被关注者id
+
+## 同时关注一群用户
+
+## 同时取消关注一群人
+
+## 获取所有我关注的人
+
+```ruby
+```
+
+```java
+```
+
+```shell
+curl "http://localhost:3000/api/v1/users/1/followerings" -H "Authorization: Basic 7pQOwX_2cHs0zwM7vwo0RA"
+```
+
+> JSON形如:
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "msg": "User followings.",
+    "data": {
+        "my_followings": [
+            {
+                "id": 1,
+                "followable_id": 2,
+                "followable_type": "User",
+                "follower_id": 1,
+                "follower_type": "User",
+                "blocked": false,
+                "created_at": "2015-04-23T17:11:34.000+08:00",
+                "updated_at": "2015-04-23T17:11:34.000+08:00"
+            }
+        ]
+    },
+    "links": null
+}
+```
+
+获取所有我关注的人
+
+### HTTP 请求
+
+`GET http://api.thecampus.cc/api/v1/users/<ID>/followerings`
+
+### 参数
+
+参数 | 默认值 | 描述
+--------- | ------- | -----------
+ID | none | 用户id
+
+## 获取所有关注我的人
+
+```ruby
+```
+
+```java
+```
+
+```shell
+curl "http://localhost:3000/api/v1/users/2/followers" -H "Authorization: Basic g6rbYtZQl3V_AxWYZabjkg"
+```
+
+> JSON形如:
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "msg": "User followeres.",
+    "data": {
+        "my_followers": [
+            {
+                "id": 1,
+                "last_name": "杨",
+                "first_name": "浮生",
+                "nick_name": "浮生",
+                "uid": "flowerwrong",
+                "avatar": "/uploads/users/avatars/a12471c1d182505e351911c54f0de72f.jpg",
+                "email": "yk@gmail.com",
+                "age": 22,
+                "university_id": 1,
+                "address_current": "12.089, 72.569",
+                "birthday": "1993-04-23T10:28:54.000+08:00",
+                "mobile": "13560474456",
+                "gender": "male",
+                "access_token": "7pQOwX_2cHs0zwM7vwo0RA",
+                "expiration_time": "2015-05-03T10:28:54.000+08:00",
+                "last_login_ip": "127.0.0.1",
+                "register_status": "active",
+                "last_sign_in_at": "2015-04-23T14:28:45.000+08:00",
+                "language": "zh_CN",
+                "register_type": "mobile",
+                "personalized_signature": "flowerwrong",
+                "country": "中国",
+                "province": "广东",
+                "city": "广州",
+                "region": "番禺",
+                "postcode": "510000",
+                "tel": "88888888",
+                "created_at": "2015-04-23T10:28:54.000+08:00",
+                "updated_at": "2015-04-23T15:41:54.000+08:00",
+                "create_by": 0
+            }
+        ]
+    },
+    "links": null
+}
+```
+
+获取所有关注我的人
+
+### HTTP 请求
+
+`GET http://api.thecampus.cc/api/v1/users/<ID>/followers`
+
+### 参数
+
+参数 | 默认值 | 描述
+--------- | ------- | -----------
+ID | none | 用户id
 
 # 推文
 
